@@ -15,7 +15,14 @@ group :development do
   gem 'sqlite3'
 end
 
+#fake seed data
+gem 'faker'
+
+#CSS framework
 gem 'bootstrap-sass'
+
+#Pry enhanced IRB shell
+gem 'pry-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
