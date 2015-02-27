@@ -1,5 +1,5 @@
 <h1>
-  <%= image_tag(@post.image.thumb.url) if @post.image? %>
+  <%= image_tag(@post.image.url) if @post.image? %>
   <%= markdown_to_html @post.title %>
 </h1>
 
