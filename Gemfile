@@ -15,6 +15,9 @@ group :development do
   gem 'sqlite3'
 end
 
+#User authentication
+gem 'devise'
+
 #fake seed data
 gem 'faker'
 
