@@ -18,6 +18,9 @@ end
 #User authentication
 gem 'devise'
 
+#hide sensitive data
+gem 'figaro', '1.0'
+
 #fake seed data
 gem 'faker'
 
