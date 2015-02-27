@@ -15,6 +15,9 @@ group :development do
   gem 'sqlite3'
 end
 
+#Post markdown
+gem 'redcarpet'
+
 #User authorization
 gem 'pundit'
 
