@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def index
   	@events = Event.all
+      authorize @events
   end
 
   def show
@@ -9,10 +10,12 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+      authorize @event
   end
 
   def create
     @event = Event.new(params.require(:event).permit(:title, :body))
+      authorize @event
     if @event.save
       flash[:notice] = "Event was saved."
       redirect_to @event
@@ -24,10 +27,12 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+      authorize @event
   end
 
 def update
     @event = Event.find(params[:id])
+      authorize @event
     if @event.update_attributes(params.require(:event).permit(:title, :body))
       flash[:notice] = "Event was updated."
       redirect_to @event

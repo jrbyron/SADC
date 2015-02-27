@@ -15,6 +15,9 @@ group :development do
   gem 'sqlite3'
 end
 
+#User authorization
+gem 'pundit'
+
 #User authentication
 gem 'devise'
 

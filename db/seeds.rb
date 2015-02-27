@@ -48,12 +48,15 @@ posts = Post.all
   )
 end
 
-user = User.first
-user.skip_reconfirmation!
-user.update_attributes!(
-  email: 'user@email.com',
-  password: 'helloworld'
+# Create an admin user
+admin = User.new(
+  name:     'Admin User',
+  email:    'admin@email.com',
+  password: 'helloworld',
+  role:     'admin'
 )
+admin.skip_confirmation!
+admin.save
 
 puts "Seed finished"
 puts "#{User.count} users created"
