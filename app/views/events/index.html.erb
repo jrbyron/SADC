@@ -1,5 +1,5 @@
 <h1>All Events</h1>
-<% if policy(Post.new).create? %>
+<% if policy(Event.new).create? %>
 <%= link_to "New Event", new_event_path, class: 'btn btn-success' %>
 <% end %>
 <% @events.each do |event| %>
