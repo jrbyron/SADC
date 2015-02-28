@@ -30,7 +30,7 @@ class EventsController < ApplicationController
       authorize @event
   end
 
-def update
+  def update
     @event = Event.find(params[:id])
       authorize @event
     if @event.update_attributes(params.require(:event).permit(:title, :body))
@@ -40,6 +40,20 @@ def update
       flash[:error] = "There was an error saving the event. Please try again."
       render :edit
     end
-end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    title = @event.title
+
+    authorize @event
+    if @event.destroy
+      flash[:notice] = "\"#{title}\" was deleted successfully."
+      redirect_to events_path
+    else
+      flash[:error] = "There was an error deleting the event."
+      render :show
+    end
+  end
 
 end
