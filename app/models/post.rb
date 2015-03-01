@@ -1,20 +1,19 @@
 class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
   belongs_to :user
   belongs_to :topic
 
   default_scope { order('rank DESC') }
 
-   validates :title, length: { minimum: 5 }, presence: true
-   validates :body, length: { minimum: 20 }, presence: true
-   validates :topic, presence: true
-   validates :user, presence: true
+  validates :title, length: { minimum: 5 }, presence: true
+  validates :body, length: { minimum: 20 }, presence: true
+  validates :topic, presence: true
+  validates :user, presence: true
 
-   mount_uploader :image, ImageUploader
-
-
-  after_create :create_vote
+  mount_uploader :image, ImageUploader
 
   def up_votes
     votes.where(value: 1).count
@@ -34,8 +33,6 @@ class Post < ActiveRecord::Base
 
     update_attribute(:rank, new_rank)
   end
-
-  private
 
   def create_vote
     user.votes.create(value: 1, post: self)
