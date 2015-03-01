@@ -7,11 +7,11 @@ module ApplicationHelper
     end
   end
 
-  def markdown_to_html(markdown)
+  def markdown(text)
     renderer = Redcarpet::Render::HTML.new
     extensions = {fenced_code_blocks: true}
     redcarpet = Redcarpet::Markdown.new(renderer, extensions)
-    (redcarpet.render markdown).html_safe
+    (redcarpet.render text).html_safe
   end
 
   def down_vote_link_classes(post)

@@ -3,13 +3,13 @@
  <%= render partial: 'votes/voter', locals: { post: @post } %>
     <h1>
       <%= image_tag(@post.image.thumb.url) if @post.image? %>
-      <%= markdown_to_html @post.title %>
+      <%= markdown @post.title %>
     </h1>
   <small>
       submitted <%= time_ago_in_words(@post.created_at) %> ago by
       <%= @post.user.name %>
     </small>
-   <p><%= markdown_to_html @post.body %></p>
+   <p><%= markdown @post.body %></p>
 
   </div>
   <div class="col-md-4">
