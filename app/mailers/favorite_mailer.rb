@@ -1,5 +1,5 @@
 class FavoriteMailer < ActionMailer::Base
-  default from: "dungeonmaster@socialistalternativedc.org"
+  default from: "info@socialistalternativedc.org"
 
   def new_comment(user, post, comment)
  
