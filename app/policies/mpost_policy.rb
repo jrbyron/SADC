@@ -1,6 +1,6 @@
 class MpostPolicy < ApplicationPolicy
   def index?
-    true
+    user.present? && (user.admin? || user.moderator? || user.member?)
   end
 
   def destroy?

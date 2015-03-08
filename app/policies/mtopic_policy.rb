@@ -1,6 +1,6 @@
 class MtopicPolicy < ApplicationPolicy
   def index?
-    true
+    user.present? && (user.admin? || user.moderator? || user.member?)
   end
 
   def create?
@@ -16,6 +16,6 @@ class MtopicPolicy < ApplicationPolicy
   end
   
   def show?
-    user.present?
+    index?
   end
 end
