@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  resources :mtopics do
+    resources :mposts, except: [:index], controller: 'mtopics/mposts'
+  end
+
+  resources :mposts, only: [:index] do
+    resources :mcomments, only: [:create, :destroy]
+    post '/up-vote' => 'votes#up_vote', as: :up_vote
+    post '/down-vote' => 'votes#down_vote', as: :down_vote
+  end
+
   devise_for :users
   resources :users, only: [:update, :show, :index]
   resources :events

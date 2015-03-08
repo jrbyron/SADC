@@ -1,0 +1,17 @@
+<% if policy( Vote.new ).create? %>
+  <div class="vote-arrows pull-left">
+    <div>
+      <%= link_to " ", 
+        mpost_up_vote_path(mpost), 
+        class: up_vote_link_classes(mpost), method: :mpost %>
+    </div>
+    <div>
+      <strong><%= mpost.points %></strong>
+    </div>
+    <div>
+      <%= link_to " ", 
+        mpost_down_vote_path(mpost), 
+        class: down_vote_link_classes(mpost), method: :mpost %>
+    </div>
+  </div>
+<% end %>

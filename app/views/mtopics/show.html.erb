@@ -1,0 +1,21 @@
+<h1><%= @mtopic.name %></h1>
+
+<% if policy(@mtopic).update? %>
+  <%= link_to "Edit Topic", edit_mtopic_path, class: 'btn btn-success' %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8">
+    <p class="lead"><%= @mtopic.description %></p>
+    <%= render @mposts %>
+    <%= will_paginate @mposts %>
+  </div>
+  <div class="col-md-4">
+    <% if policy(Mpost.new).create? %>
+      <%= link_to "New Post", new_mtopic_mpost_path(@mtopic), class: 'btn btn-success' %>
+    <% end %>
+    <% if policy(@mtopic).destroy? %>
+      <%= link_to "Delete Topic", @mtopic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %> 
+    <% end %>
+  </div>
+</div>

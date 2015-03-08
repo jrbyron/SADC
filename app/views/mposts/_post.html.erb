@@ -1,0 +1,14 @@
+<div class="media">
+  <%= render partial: 'mvotes/voter', locals: { mpost: mpost } %>
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= link_to (markdown mpost.title), [mpost.mtopic, mpost] %>
+    </h4>
+    <small>
+      <%= image_tag(mpost.user.avatar.tiny.url) if mpost.user.avatar? %>
+      submitted <%= time_ago_in_words(mpost.created_at) %> ago by
+      <%= link_to mpost.user.name, mpost.user %><br/>
+      <%= mpost.mcomments.count %> Comments
+    </small>
+  </div>
+</div>

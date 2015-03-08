@@ -1,0 +1,14 @@
+<div class="media" id="comment-<%= comment.id %>">
+  <%= link_to '#', class: 'pull-left' do %>
+    <%= image_tag(mcomment.user.avatar.small.url) if mcomment.user.avatar? %>
+  <% end %>
+  <p><%= mcomment.body %></p>
+  <div class="media-body">
+    <small>
+     <%= link_to mcomment.user.name, mcomment.user %> commented <%= time_ago_in_words(mcomment.created_at) %> ago
+      <% if policy(mcomment).destroy? %>
+        | <%= link_to "Delete", [mcomment.post, mcomment], method: :delete, remote: true %>
+      <% end %>
+    </small>
+  </div>
+</div>

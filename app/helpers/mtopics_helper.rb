@@ -1,0 +1,2 @@
+module MtopicsHelper
+end

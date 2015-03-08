@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301041048) do
+ActiveRecord::Schema.define(version: 20150307233447) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -40,6 +40,49 @@ ActiveRecord::Schema.define(version: 20150301041048) do
 
   add_index "favorites", ["post_id"], name: "index_favorites_on_post_id"
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+
+  create_table "mcomments", force: true do |t|
+    t.text     "body"
+    t.integer  "mpost_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "mcomments", ["mpost_id"], name: "index_mcomments_on_mpost_id"
+  add_index "mcomments", ["user_id"], name: "index_mcomments_on_user_id"
+
+  create_table "mposts", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "mtopic_id"
+    t.float    "rank"
+    t.string   "image"
+  end
+
+  add_index "mposts", ["mtopic_id"], name: "index_mposts_on_mtopic_id"
+  add_index "mposts", ["user_id"], name: "index_mposts_on_user_id"
+
+  create_table "mtopics", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mvotes", force: true do |t|
+    t.integer  "value"
+    t.integer  "user_id"
+    t.integer  "mposts_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mvotes", ["mposts_id"], name: "index_mvotes_on_mposts_id"
+  add_index "mvotes", ["user_id"], name: "index_mvotes_on_user_id"
 
   create_table "posts", force: true do |t|
     t.string   "title"

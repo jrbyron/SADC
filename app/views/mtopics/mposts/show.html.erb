@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-8">
+ <%= render partial: 'mvotes/voter', locals: { mpost: @mpost } %>
+    <h1>
+      <%= image_tag(@mpost.image.url) if @mpost.image? %>
+      <%= markdown @mpost.title %>
+    </h1>
+  <small>
+      submitted <%= time_ago_in_words(@mpost.created_at) %> ago by
+      <%= link_to @mpost.user.name, @mpost.user %>
+    </small>
+   <p><%= markdown @mpost.body %></p>
+
+  </div>
+  <div class="col-md-4">
+    <% if policy(@mpost).edit? %>
+      <%= link_to "Edit", edit_mtopic_mpost_path(@mtopic, @mpost), class: 'btn btn-success' %>
+    <% end %>
+  </div>
+  <% if policy(@mpost).destroy? %>
+    <%= link_to "Delete Post", [@mtopic, @mpost], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this post?' } %>
+  <% end %>
+  <div>
+    <h3><%= pluralize(@mpost.points, 'point') %></h3>
+    <small>
+      <%= pluralize(@mpost.up_votes, 'up vote') %>, 
+      <%= pluralize(@mpost.down_votes, 'down vote') %>
+    </small>
+  </div>
+  <%= render partial: 'favorites/favorite', locals: { mpost: @mpost } %>
+</div>
+
+</br>
+
+<div class="row">
+  <h2>Comments</h2>
+  <div class='col-md-12'>
+    <%= render partial: 'comments/comment', collection: @mcomments %>
+    <%= render 'comments/form' %>
+  </div>
+</div>
