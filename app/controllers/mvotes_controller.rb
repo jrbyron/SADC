@@ -1,32 +1,32 @@
 class MvotesController < ApplicationController
 
-  before_action :load_post_and_vote
+  # before_action :load_post_and_vote
 
-  def up_vote
-    update_vote!(1)
-    redirect_to :back
-  end
+  # def up_vote
+  #   update_vote!(1)
+  #   redirect_to :back
+  # end
 
-  def down_vote
-    update_vote!(-1)
-    redirect_to :back
-  end
+  # def down_vote
+  #   update_vote!(-1)
+  #   redirect_to :back
+  # end
 
-  private
+  # private
 
-  def load_post_and_vote
-    @mpost = Mpost.find(params[:mpost_id])
-    @vote = @mpost.votes.where(user_id: current_user.id).first
-  end
+  # def load_post_and_vote
+  #   @mpost = Mpost.find(params[:mpost_id])
+  #   @mvote = @mpost.mvotes.where(user_id: current_user.id).first
+  # end
 
-  def update_vote!(new_value)
-    if @vote
-      authorize @vote, :update?
-      @vote.update_attribute(:value, new_value)
-    else
-      @vote = current_user.votes.build(value: new_value, mpost: @mpost)
-      authorize @vote, :create?
-      @vote.save
-    end
-  end
+  # def update_vote!(new_value)
+  #   if @mvote
+  #     authorize @mvote, :update?
+  #     @mvote.update_attribute(:value, new_value, mpost: @mpost)
+  #   else
+  #     @mvote = current_user.mvotes.build(value: new_value, mpost: @mpost)
+  #     authorize @mvote, :create?
+  #     @mvote.save
+  #   end
+  # end
 end

@@ -76,12 +76,12 @@ ActiveRecord::Schema.define(version: 20150307233447) do
   create_table "mvotes", force: true do |t|
     t.integer  "value"
     t.integer  "user_id"
-    t.integer  "mposts_id"
+    t.integer  "mpost_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "mvotes", ["mposts_id"], name: "index_mvotes_on_mposts_id"
+  add_index "mvotes", ["mpost_id"], name: "index_mvotes_on_mpost_id"
   add_index "mvotes", ["user_id"], name: "index_mvotes_on_user_id"
 
   create_table "posts", force: true do |t|

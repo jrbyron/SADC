@@ -19,13 +19,10 @@ class McommentsController < ApplicationController
 
     if @mcomment.destroy
       flash[:notice] = "Comment was removed."
+      redirect_to [@mpost.mtopic, @mpost]
     else
       flash[:error] = "Comment couldn't be deleted. Try again."
-    end
-    
-    respond_to do |format|
-      format.html
-      format.js
+      redirect_to [@mpost.mtopic, @mpost]
     end
   end
 

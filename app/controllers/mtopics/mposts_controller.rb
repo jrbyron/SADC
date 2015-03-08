@@ -25,7 +25,7 @@ class Mtopics::MpostsController < ApplicationController
     authorize @mpost
 
     if @mpost.save
-      @mpost.create_vote
+      #@mpost.create_vote
       flash[:notice] = "Post was saved."
       redirect_to [@mtopic, @mpost]
     else
