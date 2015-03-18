@@ -1,0 +1,27 @@
+<div align="left">
+  <h3>Send us a message!</h3>
+  <p><i>*all fields required</i></p>
+
+<div class="col-md-8">
+    <%= form_for Contact.new do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control', placeholder: "name" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control', placeholder: "email" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :message %>
+        <%= f.text_area :message, rows: 8, class: 'form-control', placeholder: "Message" %>
+      </div>
+      <div class= "hidden">
+        <%= f.label :nickname %>
+        <%= f.text_field :nickname, class: 'form-control', placeholder: "Leave this field blank!" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Send", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
