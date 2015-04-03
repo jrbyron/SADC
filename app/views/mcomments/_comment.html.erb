@@ -6,7 +6,7 @@
   <p><%= mcomment.body %></p>
   <div class="media-body">
     <small>
-     <%= link_to mcomment.user.name, mcomment.user %> commented <%= mcomment.created_at.strftime("%b %d, %Y") %>
+     <%= link_to mcomment.user.name, mcomment.user %> commented on <%= mcomment.created_at.strftime("%b %d, %Y at %I:%M%p") %>
       <% if policy(mcomment).destroy? %>
         | <%= link_to "Delete", [mcomment.mpost, mcomment], method: :delete %>
       <% end %>
