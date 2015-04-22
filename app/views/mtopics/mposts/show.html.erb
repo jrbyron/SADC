@@ -6,7 +6,7 @@
       <%= markdown @mpost.title %>
     </h1>
   <small>
-      submitted <%= time_ago_in_words(@mpost.created_at) %> ago by
+      submitted <%= @mpost.created_at.strftime("%b %d, %Y") %> by
       <%= link_to @mpost.user.name, @mpost.user %>
     </small>
    <p><%= markdown @mpost.body %></p>
